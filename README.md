@@ -31,21 +31,21 @@ I recommend mounting the /tor/ directory from inside the container to some path 
 
 You can also use the image inside of a docker-compose.yaml file:
 
-`---`
-`version: "3.7"`
-`services:`
-`     tor:`
-`        container_name: onion-proxy`
-`        image: systemling32/ezonionhost`
-`        environment:`
-`             PROXY: 'True'`
-`              HOSTS: 'webserver=80:127.0.0.1:80,bitcoin=8333:bitcoind:8333'`
-`        volumes:`
-`            - ${PWD}:/tor/`
-`        ports:`
-`           - "9050:9050/tcp"`
-`        restart: unless-stopped`
-
+``` bash
+version: "3.7"
+services:
+  tor:
+    container_name: onion-proxy
+    image: systemling32/ezonionhost
+    environment:
+      PROXY: 'True'
+      HOSTS: 'webserver=80:127.0.0.1:80,bitcoin=8333:bitcoind:8333'
+    volumes:
+      - ${PWD}:/tor/
+    ports:
+      - "9050:9050/tcp"
+    restart: unless-stopped
+```
 ## Credits
 
 Most of the Dockerfile code is copied from [BarneyBuffet/docker-tor](https://github.com/BarneyBuffet/docker-tor). Many thanks for the awesome work!
