@@ -81,14 +81,13 @@ COPY --chown=nonroot:nonroot entrypoint.py /data/
 
 ## Docker health check
 HEALTHCHECK --interval=60s --timeout=15s --start-period=20s \
-            CMD curl -sx localhost:8118 'https://check.torproject.org/' | \
-           grep -qm1 Congratulations
+            CMD curl --socks5-hostname 127.0.0.1:9050 'https://check.torproject.org/' | grep -q "Congratulations"
  
 ENTRYPOINT ["python3", "/data/entrypoint.py"]
 
 EXPOSE 9050/tcp
 
-LABEL name="Tor proxy"
+LABEL name="EZ Onion host"
 LABEL version=$TOR_VER
 LABEL description="A docker image to make your hosts available over the TOR network."
 LABEL license="GPL3.0"
