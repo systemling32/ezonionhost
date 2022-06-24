@@ -16,8 +16,8 @@ if not hostsvar == "None":
 
 		print(host)
 	## Writing the Hidden Service Config to torrc file.
-	f.write("HiddenServiceDir " + datadir + "/services/" + hostdesc + "\n")
-	f.write("HiddenServicePort " + serviceport + " " + hostname + ":" + hostport + "\n")
+		f.write("HiddenServiceDir " + datadir + "/services/" + hostdesc + "\n")
+		f.write("HiddenServicePort " + serviceport + " " + hostname + ":" + hostport + "\n")
 
 ## Setup Socks Proxy if desired by the user.
 #print(os.environ['PROXY'])
